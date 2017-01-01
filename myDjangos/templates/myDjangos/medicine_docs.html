@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MedicineDocumentsList</title>
+</head>
+<body>
+
+    {% extends "myDjangos/base.html" %}
+
+    {% block content %}
+
+        <p>Medicine Documents</p>
+
+        <ul>
+            {% for medicineDoc in medicineDocsList %}
+                <li>
+                    <a href="{% url 'myDjangos:medicineDocDetail' medicineDoc.id %}">{{ medicineDoc }}</a>
+                </li>
+            {% empty %}
+                <li>No Medicine Document has been added yet.</li>
+            {% endfor %}
+        </ul>
+
+    {% endblock content%}
+
+</body>
+</html>

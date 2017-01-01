@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Base Page</title>
+</head>
+<body>
+    <p>
+        <a href="{% url 'myDjangos:index' %}">Medicine Web</a>
+        <a href="{% url 'myDjangos:medicineDocs' %}">Medicine Documents</a>
+    </p>
+
+    {% block content %}
+    {% endblock content%}
+
+</body>
+</html>

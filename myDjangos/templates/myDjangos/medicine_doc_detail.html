@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Medicine Doc Detail Page</title>
+</head>
+<body>
+
+    {% extends "myDjangos/base.html" %}
+
+    {% block content %}
+
+        <p>MedicineDoc: {{medicineDocValue}}</p>
+
+        <p>Medicines:</p>
+
+        <ul>
+            {% for medicine in medicines %}
+
+                <li>
+                    <p>{{ medicine.date_added|date:'M d, Y H:i' }}</p>
+                    <p>{{ medicine.medicine_name|linebreaks }}</p>
+                </li>
+
+            {% empty %}
+
+                <li>There is no medicine belongs to the current medicine document.</li>
+
+            {% endfor %}
+        </ul>
+
+    {% endblock content%}
+
+</body>
+</html>
