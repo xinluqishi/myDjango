@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Medicine Doc</title>
+</head>
+<body>
+
+    {% extends "myDjangos/base.html" %}
+
+    {% block content %}
+
+        <p>Add a new Medicine Document:</p>
+
+        <form action="{% url 'myDjangos:new_medicine_doc' %}" method="post">
+
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button name="submit">add medicineDoc</button>
+
+        </form>
+
+    {% endblock content %}
+
+</body>
+</html>

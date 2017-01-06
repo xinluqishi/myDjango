@@ -13,4 +13,7 @@ urlpatterns = [
 
     # Medicine Document Detail Page
     url(r'^medicineDocs/(?P<medicinedoc_id>\d+)/$', views.medicine_doc_detail, name='medicineDocDetail'),
+
+    # Add a new object for medicine document
+    url(r'^new_medicine_doc/$', views.new_medicine_doc, name='new_medicine_doc'),
 ]
