@@ -6,7 +6,6 @@ from .medicineDocManage import MedicineDocForm, MedicineForm
 import logging
 
 
-
 def index(request):
     return render(request, 'myDjangos/index.html')
 
@@ -56,3 +55,17 @@ def medicine_detail(request, medicinedoc_id):
     return render(request, 'myDjangos/new_medicine.html', context)
 
 
+def edit_medicine(request, medicine_id):
+    medicine = Medicine.objects.get(id=medicine_id)
+    medicineDocument = medicine.medicine_document
+
+    if request.method != 'POST':
+        form = MedicineForm(instance=medicine)
+    else:
+        form = MedicineForm(instance=medicine, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('myDjangos:medicineDocDetail', args=[medicineDocument.id]))
+
+    context = {'medicine': medicine, 'medicineDocument': medicineDocument, 'form': form}
+    return render(request, 'myDjangos/edit_medicine.html', context)

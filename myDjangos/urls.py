@@ -20,4 +20,6 @@ urlpatterns = [
     # Add a new medicine in the medicine document detail page
     url(r'^new_medicine/(?P<medicinedoc_id>\d+)/$', views.medicine_detail, name='medicineDetail'),
 
+    # Edit a medicine record
+    url(r'^edit_medicine/(?P<medicine_id>\d+)/$', views.edit_medicine, name='editMedicine'),
 ]

@@ -24,6 +24,9 @@
                 <li>
                     <p>{{ medicine.date_added|date:'M d, Y H:i' }}</p>
                     <p>{{ medicine.medicine_name|linebreaks }}</p>
+                    <p>
+                        <a href="{% url 'myDjangos:editMedicine' medicine.id %}">edit medicine</a>
+                    </p>
                 </li>
 
             {% empty %}

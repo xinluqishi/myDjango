@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Medicine</title>
+</head>
+<body>
+    {% extends "myDjangos/base.html" %}
+
+    {% block content %}
+
+        <p><a href="{% url 'myDjangos:medicineDocDetail' medicineDocument.id %}">{{ medicineDocument }}</a></p>
+
+        <p>Edit a medicine: </p>
+        <form action="{% url 'myDjangos:editMedicine' medicine.id %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button name="submit">save medicine</button>
+        </form>
+
+
+    {% endblock content%}
+</body>
+</html>
