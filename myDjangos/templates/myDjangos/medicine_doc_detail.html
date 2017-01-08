@@ -14,6 +14,10 @@
 
         <p>Medicines:</p>
 
+        <p>
+            <a href="{% url 'myDjangos:medicineDetail' medicineDocValue.id %}">add new medicine</a>
+        </p>
+
         <ul>
             {% for medicine in medicines %}
 

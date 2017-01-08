@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Medicine</title>
+</head>
+<body>
+
+    {% extends "myDjangos/base.html" %}
+
+    {% block content %}
+
+        <p><a href="{% url 'myDjangos:medicineDocDetail' medicineDoc.id %}">{{ medicineDoc }}</a></p>
+
+        <p>Add a new medicine: </p>
+        <form action="{% url 'myDjangos:medicineDetail' medicineDoc.id %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button name="submit">add medicine</button>
+        </form>
+
+
+    {% endblock content%}
+
+</body>
+</html>

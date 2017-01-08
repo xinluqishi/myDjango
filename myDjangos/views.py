@@ -2,7 +2,8 @@ from django.shortcuts import render
 from .models import Medicine, MedicineDocument
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
-from .medicineDocManage import MedicineDocForm
+from .medicineDocManage import MedicineDocForm, MedicineForm
+import logging
 
 
 
@@ -34,4 +35,24 @@ def new_medicine_doc(request):
 
     context = {'form': form}
     return render(request, 'myDjangos/new_medicine_doc.html', context)
+
+
+def medicine_detail(request, medicinedoc_id):
+    logging.debug("medicinedoc_id is: " + medicinedoc_id)
+    medicineDoc = MedicineDocument.objects.get(id=medicinedoc_id)
+
+    if request.method != 'POST':
+        form = MedicineForm()
+
+    else:
+        form = MedicineForm(request.POST)
+        if form.is_valid():
+            new_medicine = form.save(commit=False)
+            new_medicine.medicine_document = medicineDoc
+            new_medicine.save()
+            return HttpResponseRedirect(reverse('myDjangos:medicineDocDetail', args=[medicinedoc_id]))
+
+    context = {'medicineDoc': medicineDoc, 'form': form}
+    return render(request, 'myDjangos/new_medicine.html', context)
+
 
