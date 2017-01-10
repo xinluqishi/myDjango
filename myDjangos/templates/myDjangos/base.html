@@ -6,8 +6,13 @@
 </head>
 <body>
     <p>
-        <a href="{% url 'myDjangos:index' %}">Medicine Web</a>
-        <a href="{% url 'myDjangos:medicineDocs' %}">Medicine Documents</a>
+        <a href="{% url 'myDjangos:index' %}">Medicine Web</a> -
+        <a href="{% url 'myDjangos:medicineDocs' %}">Medicine Documents</a> -
+        {% if user.is_authenticated %}
+            Hello, {{ user.username }}!
+        {% else %}
+            <a href="{% url 'users:login' %}">log in</a>
+        {% endif %}
     </p>
 
     {% block content %}
