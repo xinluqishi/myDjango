@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from .models import Medicine, MedicineDocument
 from django.http import HttpResponseRedirect
@@ -10,6 +11,7 @@ def index(request):
     return render(request, 'myDjangos/index.html')
 
 
+@login_required
 def medicine_docs(request):
     medicineDocsList = MedicineDocument.objects.order_by('date_added')
     context = {'medicineDocsList': medicineDocsList}
