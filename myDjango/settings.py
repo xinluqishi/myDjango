@@ -87,12 +87,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         # 'ENGINE': 'django.db.backends.mysql',
-        # 'ENGINE': 'mysql.connector.django',
-        # 'NAME': 'medicine_system_management',    # 你的数据库名称
-        # 'USER': 'root',     # 你的数据库用户名
-        # 'PASSWORD': 'root',     # 你的数据库密码
-        # 'HOST': '127.0.0.1',         # 你的数据库主机，留空默认为localhost
-        # 'PORT': '3306',     # 你的数据库端口
+        # 'NAME': 'medicine_management',
+        # 'USER': 'root',
+        # 'PASSWORD': 'root',
+        # 'HOST': '127.0.0.1',
+        # 'PORT': '3306',
     }
 }
 

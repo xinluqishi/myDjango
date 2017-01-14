@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>register page</title>
+</head>
+<body>
+    {% extends "myDjangos/base.html" %}
+
+    {% block content %}
+
+        <form method="post" action="{% url 'users:register' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button name="submit">register</button>
+            <input type="hidden" name="next" value="{% url 'myDjangos:index' %}" />
+
+        </form>
+
+    {% endblock content%}
+</body>
+</html>
