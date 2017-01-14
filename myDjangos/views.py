@@ -18,6 +18,7 @@ def medicine_docs(request):
     return render(request, 'myDjangos/medicine_docs.html', context)
 
 
+@login_required
 def medicine_doc_detail(request, medicinedoc_id):
     medicineDocValue = MedicineDocument.objects.get(id=medicinedoc_id)
     medicinesList = medicineDocValue.medicine_set.order_by('-date_added')
@@ -25,6 +26,7 @@ def medicine_doc_detail(request, medicinedoc_id):
     return render(request, 'myDjangos/medicine_doc_detail.html', context)
 
 
+@login_required
 def new_medicine_doc(request):
     if request.method != 'POST':
         form = MedicineDocForm()
@@ -38,6 +40,7 @@ def new_medicine_doc(request):
     return render(request, 'myDjangos/new_medicine_doc.html', context)
 
 
+@login_required
 def medicine_detail(request, medicinedoc_id):
     logging.debug("medicinedoc_id is: " + medicinedoc_id)
     medicineDoc = MedicineDocument.objects.get(id=medicinedoc_id)
@@ -57,6 +60,7 @@ def medicine_detail(request, medicinedoc_id):
     return render(request, 'myDjangos/new_medicine.html', context)
 
 
+@login_required
 def edit_medicine(request, medicine_id):
     medicine = Medicine.objects.get(id=medicine_id)
     medicineDocument = medicine.medicine_document
